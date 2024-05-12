@@ -1,7 +1,18 @@
+"use client"
+
 import Headline from "@/components/atoms/Headline";
 import Card from "@/components/molecules/Card";
+import { useEffect, useState } from "react";
 
 const EventList = () => {
+    const [count, setCount] = useState(0)
+
+    useEffect(() => {
+        console.log("countが更新されました")
+      }, 
+      [count]
+    )
+
     return (
         <div>
              <Headline title="ここはイベント一覧画面です"  />
@@ -11,6 +22,11 @@ const EventList = () => {
                 startAt="2023-07-27 19:30"
                 url="https://okinawa-frontend.connpass.com/event/289268/"
             />
+            <p>count: {count}</p>
+            <button 
+                className="rounded-lg bg-grey-500 px-8 py-3 text-center text-sm hover:bg-purple-600" 
+                onClick={() => setCount(count+1)}>カウントアップ
+            </button>
         </div>
     )
 }
